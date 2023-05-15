@@ -21,7 +21,7 @@ Flags:
 ```
 
 ### 使用说明
-1. 下载二进制文件及配置文件模板
+1. 下载二进制文件及配置文件模板: https://github.com/wuyuw/subtitle-translator-ai/releases/download/v1.0.0/sta-1.0.0.zip
 2. 更新配置文件
 3. 执行脚本
 ```
