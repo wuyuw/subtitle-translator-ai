@@ -1,0 +1,27 @@
+.DS_Store
+
+# local env files
+.env.local
+config.yaml
+
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+log
+logs
+.log
+
+etc
+etc/*.yaml
+
+result.srt.*
+
+# 
+sta

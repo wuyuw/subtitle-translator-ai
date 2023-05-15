@@ -1,0 +1,9 @@
+Engine: OpenAI
+OpenaiKey: sk-xxxx
+Proxy: 127.0.0.1:51837
+Language: Chinese
+Subject: network security and cyber defense
+BatchSize: 20
+Endpoints: 19,36,52,68
+Inpath: 
+Outpath:
