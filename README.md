@@ -19,3 +19,34 @@ Flags:
   -p, --proxy string       代理配置(127.0.0.1:51837)
   -s, --subject string     目标语言 (default "movie")
 ```
+
+### 使用说明
+1. 下载二进制文件及配置文件模板
+2. 更新配置文件
+3. 执行脚本
+```
+$ ./sta -f config.yaml 
+
+# 命令行中指定的参数优先级更高，会覆盖配置文件中默认值
+$ ./sta -f config.yaml --subject "network security" --batchSize=20
+```
+
+### 开发说明
+
+1. 检出代码
+```
+$ git clone git@github.com:wuyuw/subtitle-translator-ai.git
+```
+2. 进入项目根目录
+```
+$ cd subtitle-translator-ai
+```
+3. 安装依赖项
+```
+$ go mod tidy
+```
+4. 构建
+```
+$ make build
+```
+
