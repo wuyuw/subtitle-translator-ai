@@ -30,6 +30,7 @@ var (
 	endpoints    string
 	proxy        string
 	openaiKey    string
+	reqPerMin    int
 	inpath       string
 	outpath      string
 )
@@ -45,6 +46,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&endpoints, "endpoints", "d", "", "指定语义完整的字幕序号集合(10,25,40)")
 	rootCmd.PersistentFlags().StringVarP(&openaiKey, "openaiKey", "k", "", "openai API key")
 	rootCmd.PersistentFlags().StringVarP(&proxy, "proxy", "p", "", "代理配置(127.0.0.1:51837)")
+	rootCmd.PersistentFlags().IntVarP(&reqPerMin, "reqPerMin", "r", 3, "每分钟允许请求OpenAI接口次数")
 	rootCmd.PersistentFlags().StringVarP(&inpath, "inpath", "i", "", "输入字幕文件路径")
 	rootCmd.PersistentFlags().StringVarP(&outpath, "outpath", "o", "", "输出字幕文件路径")
 	rootCmd.MarkPersistentFlagRequired("inpath")
@@ -57,6 +59,7 @@ func init() {
 	viper.BindPFlag("batchSize", rootCmd.PersistentFlags().Lookup("batchSize"))
 	viper.BindPFlag("endpoints", rootCmd.PersistentFlags().Lookup("endpoints"))
 	viper.BindPFlag("openaiKey", rootCmd.PersistentFlags().Lookup("openaiKey"))
+	viper.BindPFlag("reqPerMin", rootCmd.PersistentFlags().Lookup("reqPerMin"))
 	viper.BindPFlag("inpath", rootCmd.PersistentFlags().Lookup("inpath"))
 	viper.BindPFlag("outpath", rootCmd.PersistentFlags().Lookup("outpath"))
 }

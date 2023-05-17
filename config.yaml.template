@@ -1,5 +1,6 @@
 Engine: OpenAI
 OpenaiKey: sk-xxxx
+ReqPerMin: 20
 Proxy: 127.0.0.1:51837
 JiebaDictDir: ./jiebadict
 Language: Chinese

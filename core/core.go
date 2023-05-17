@@ -35,6 +35,7 @@ func Run() {
 	engine := viper.GetString("engine")
 	jiebaDictDir := viper.GetString("jiebaDictDir")
 	proxy := viper.GetString("proxy")
+	reqPerMin := viper.GetInt("reqPerMin")
 	inPath := viper.GetString("inpath")
 	outPath := viper.GetString("outpath")
 
@@ -48,6 +49,7 @@ func Run() {
 	log.Println(xlog.Info(fmt.Sprintf("目标语言: %s", language)))
 	log.Println(xlog.Info(fmt.Sprintf("主题场景: %s", subject)))
 	log.Println(xlog.Info(fmt.Sprintf("批次行数: %d", batchSize)))
+	log.Println(xlog.Info(fmt.Sprintf("接口调用次数/分: %d", reqPerMin)))
 	log.Println(xlog.Info(fmt.Sprintf("标记结束行: %s", endpoints)))
 	log.Println(xlog.Info(fmt.Sprintf("原字幕文件: %s", inPath)))
 	log.Println(xlog.Info(fmt.Sprintf("输出字幕文件: %s", outPath)))
@@ -130,7 +132,7 @@ func Run() {
 		// 当前批次处理
 		batchHandle(s, batch, content, bar)
 		batch.Reset()
-		time.Sleep(time.Second * 2)
+		time.Sleep(time.Duration(60/reqPerMin) * time.Second)
 	}
 	// 最后一批处理
 	if len(batch.Lines) > 0 {
