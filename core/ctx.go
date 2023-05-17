@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"path"
 
 	"github.com/spf13/viper"
@@ -25,6 +24,5 @@ func Newjieba() *gojieba.Jieba {
 	userPath := path.Join(dictDir, "user.dict.utf8")
 	idfPath := path.Join(dictDir, "idf.utf8")
 	stopPath := path.Join(dictDir, "stop_words.utf8")
-	fmt.Println(jiebaPath)
 	return gojieba.NewJieba(jiebaPath, hmmPath, userPath, idfPath, stopPath)
 }
