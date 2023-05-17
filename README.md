@@ -21,14 +21,14 @@ Flags:
 ```
 
 ### 使用说明
-1. 下载二进制文件及配置文件模板: https://github.com/wuyuw/subtitle-translator-ai/releases/download/v1.0.0/sta-1.0.0.zip
+1. 下载二进制文件及配置文件模板(此为Mac M1构建，其他系统架构自行打包): https://github.com/wuyuw/subtitle-translator-ai/releases/download/v1.0.0/sta-1.0.0-mac-arm64.zip
 2. 更新配置文件
 3. 执行脚本
 ```
-$ ./sta -f config.yaml 
+$ ./sta -f config.yaml --inpath ./test.srt --outpath ./result.srt
 
 # 命令行中指定的参数优先级更高，会覆盖配置文件中默认值
-$ ./sta -f config.yaml --subject "network security" --batchSize=20
+$ ./sta -f config.yaml --inpath ./test.srt --outpath ./result.srt --subject "network security" --batchSize=20
 ```
 
 ### 开发说明
@@ -47,6 +47,9 @@ $ go mod tidy
 ```
 4. 构建
 ```
-$ make build
+# Mac/Linux
+$ go build -o sta .
+# windows
+$ go build -o sta.exe .
 ```
 
