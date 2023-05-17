@@ -8,6 +8,7 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"subtitle-translator-ai/translator"
 	"subtitle-translator-ai/utils/xlog"
@@ -129,6 +130,7 @@ func Run() {
 		// 当前批次处理
 		batchHandle(s, batch, content, bar)
 		batch.Reset()
+		time.Sleep(time.Second * 2)
 	}
 	// 最后一批处理
 	if len(batch.Lines) > 0 {
