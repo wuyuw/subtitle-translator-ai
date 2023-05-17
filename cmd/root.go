@@ -21,22 +21,24 @@ var rootCmd = &cobra.Command{
 }
 
 var (
-	config    string
-	engine    string
-	language  string
-	subject   string
-	batchSize int
-	endpoints string
-	proxy     string
-	openaiKey string
-	inpath    string
-	outpath   string
+	config       string
+	engine       string
+	jiebaDictDir string
+	language     string
+	subject      string
+	batchSize    int
+	endpoints    string
+	proxy        string
+	openaiKey    string
+	inpath       string
+	outpath      string
 )
 
 func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.PersistentFlags().StringVarP(&config, "config", "f", "", "配置文件")
 	rootCmd.PersistentFlags().StringVarP(&engine, "engine", "e", "Google", "翻译引擎")
+	rootCmd.PersistentFlags().StringVarP(&jiebaDictDir, "jiebaDictDir", "j", "jiebadict", "结巴分词字典文件目录")
 	rootCmd.PersistentFlags().StringVarP(&language, "language", "l", "Chinese", "目标语言")
 	rootCmd.PersistentFlags().StringVarP(&subject, "subject", "s", "movie", "目标语言")
 	rootCmd.PersistentFlags().IntVarP(&batchSize, "batchSize", "b", 10, "每次翻译的字幕行数")
@@ -49,6 +51,7 @@ func init() {
 	rootCmd.MarkPersistentFlagRequired("outpath")
 	viper.BindPFlag("config", rootCmd.PersistentFlags().Lookup("config"))
 	viper.BindPFlag("engine", rootCmd.PersistentFlags().Lookup("engine"))
+	viper.BindPFlag("jiebaDictDir", rootCmd.PersistentFlags().Lookup("jiebaDictDir"))
 	viper.BindPFlag("language", rootCmd.PersistentFlags().Lookup("language"))
 	viper.BindPFlag("subject", rootCmd.PersistentFlags().Lookup("subject"))
 	viper.BindPFlag("batchSize", rootCmd.PersistentFlags().Lookup("batchSize"))

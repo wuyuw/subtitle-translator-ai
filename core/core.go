@@ -28,14 +28,7 @@ Target language: %s
 
 var SvcCtx *SvcContext
 
-func init() {
-	SvcCtx = NewSvcContext()
-}
-
 func Run() {
-	defer func() {
-		SvcCtx.Jieba.Free()
-	}()
 	language := viper.GetString("language")
 	subject := viper.GetString("subject")
 	engine := viper.GetString("engine")
@@ -66,6 +59,12 @@ func Run() {
 			endpointLines[lineNo] = struct{}{}
 		}
 	}
+
+	// 初始化上下文
+	SvcCtx = NewSvcContext()
+	defer func() {
+		SvcCtx.Jieba.Free()
+	}()
 
 	// 输入输出文件校验
 	if !DoesFileExist(inPath) {
